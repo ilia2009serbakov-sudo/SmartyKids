@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartyKids Тамбов — детский развивающий центр</title>
+<meta
+    name="description"
+    content="SmartyKids Тамбов — детский развивающий центр на ул. Агапкина, 21А. Ментальная арифметика, скорочтение, каллиграфия, финансовая грамотность, Masterчтения, креативная математика."
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+:root{
+    --pink:#ff00b2;
+    --pink-deep:#ff0080;
+    --purple:#660dff;
+    --purple-light:#b24dff;
+    --blue:#0040ff;
+    --cyan:#00d9ff;
+    --orange:#ffb200;
+    --yellow:#ffe500;
+    --ink:#141221;
+    --ink-soft:#5b5670;
+    --paper:#ffffff;
+    --cloud:#f7f5fc;
+    --line:#ece8f5;
+    --radius:26px;
+    --radius-lg:36px;
+    --shadow:
+        0 18px 45px rgba(20,10,45,.10);
+    --shadow-lg:
+        0 30px 80px rgba(20,10,45,.16);
+}
+
+/*RESET*/
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+@media(prefers-reduced-motion:reduce){
+    html{
+        scroll-behavior:auto;
+    }
+
+    *{
+        animation-duration:.01ms !important;
+        transition-duration:.01ms !important;
+    }
+}
+
+body{
+    font-family:"Nunito",Arial,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    overflow-x:hidden;
+}
+
+body.menu-open{
+    overflow:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+button,
+input,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+:focus-visible{
+    outline:3px solid var(--blue);
+    outline-offset:3px;
+}
+
+.container{
+    width:min(1180px,calc(100% - 40px));
+    margin:0 auto;
+}
+
+/*TYPE*/
+.display{
+    font-family:"Baloo 2","Nunito",sans-serif;
+    font-weight:800;
+}
+
+.gradient{
+    background:
+        linear-gradient(
+            95deg,
+            var(--pink),
+            var(--purple)
+        );
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+/*COMMON*/
+.section{
+    padding:104px 0;
+}
+
+.section-cloud{
+    background:var(--cloud);
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:14px;
+    color:var(--pink-deep);
+    font-size:13px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1.6px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--purple)
+        );
+}
+
+.section-title{
+    font-size:clamp(34px,4.6vw,54px);
+    line-height:1.02;
+    letter-spacing:-1.5px;
+}
+
+.section-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:40px;
+    margin-bottom:50px;
+}
+
+.section-subtitle{
+    max-width:460px;
+    color:var(--ink-soft);
+    font-size:16px;
+    line-height:1.65;
+}
+
+/*BUTTONS*/
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    min-height:56px;
+    padding:15px 27px;
+    border:0;
+    border-radius:999px;
+    font-weight:900;
+    font-size:15px;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.btn-primary{
+    color:var(--paper);
+    background:
+        linear-gradient(
+            100deg,
+            var(--pink),
+            var(--purple)
+        );
+    box-shadow:
+        0 14px 34px rgba(255,0,178,.28);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 20px 44px rgba(255,0,178,.34);
+}
+
+.btn-light{
+    color:var(--ink);
+    background:var(--paper);
+    border:2px solid var(--line);
+}
+
+.btn-light:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--shadow);
+    border-color:transparent;
+}
+
+.btn-outline{
+    color:var(--purple);
+    background:transparent;
+    border:2px solid rgba(102,13,255,.2);
+}
+
+.btn-outline:hover{
+    color:var(--paper);
+    background:var(--purple);
+    border-color:var(--purple);
+    transform:translateY(-2px);
+}
+
+/*HEADER*/
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:18px 0;
+    transition:.3s ease;
+}
+
+.header.scrolled{
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(14px);
+    box-shadow:
+        0 8px 30px rgba(20,10,45,.08);
+    padding:12px 0;
+}
+
+.header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    flex:none;
+}
+
+.logo-mark{
+    position:relative;
+    width:42px;
+    height:42px;
+    border-radius:
+        13px 13px 13px 4px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--purple)
+        );
+    transform:rotate(-8deg);
+    box-shadow:
+        0 8px 20px rgba(255,0,178,.24);
+}
+
+.logo-mark::after{
+    content:"✦";
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--paper);
+    font-size:17px;
+    transform:rotate(8deg);
+}
+
+.logo-name{
+    font-family:"Baloo 2",sans-serif;
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:-.5px;
+    color:var(--ink);
+}
+
+.logo-name span{
+    color:var(--pink-deep);
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:26px;
+    font-size:15px;
+    font-weight:800;
+}
+
+.nav a{
+    position:relative;
+}
+
+.nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:2px;
+    border-radius:10px;
+    background:var(--pink);
+    transition:.25s ease;
+}
+
+.nav a:hover::after{
+    width:100%;
+}
+
+.header-phone{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:15px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.header-phone .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--orange);
+}
+
+.menu-btn{
+    display:none;
+    width:44px;
+    height:44px;
+    padding:0;
+    border:0;
+    background:none;
+}
+
+.menu-btn span{
+    display:block;
+    width:24px;
+    height:3px;
+    margin:5px auto;
+    border-radius:10px;
+    background:var(--ink);
+    transition:.25s ease;
+}
+
+.menu-btn.active span:nth-child(1){
+    transform:translateY(8px) rotate(45deg);
+}
+
+.menu-btn.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-btn.active span:nth-child(3){
+    transform:translateY(-8px) rotate(-45deg);
+}
+
+.mobile-nav{
+    display:none;
+    position:absolute;
+    top:76px;
+    left:20px;
+    right:20px;
+    padding:16px;
+    background:var(--paper);
+    border-radius:22px;
+    box-shadow:var(--shadow-lg);
+}
+
+.mobile-nav.active{
+    display:grid;
+}
+
+.mobile-nav a{
+    padding:14px 6px;
+    border-bottom:1px solid var(--line);
+    font-weight:800;
+}
+
+.mobile-nav a:last-child{
+    border-bottom:0;
+    color:var(--pink-deep);
+}
+
+/*HERO*/
+.hero{
+    position:relative;
+    min-height:840px;
+    padding:105px 0 0;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 6% 18%,
+            rgba(255,0,178,.10),
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 96% 22%,
+            rgba(102,13,255,.12),
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 82% 96%,
+            rgba(0,217,255,.10),
+            transparent 26%
+        );
+}
+
+.hero-grid{
+    position:relative;
+    z-index:1;
+    min-height:590px;
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    align-items:center;
+    gap:64px;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:9px 16px;
+    margin-bottom:22px;
+    background:var(--paper);
+    border-radius:999px;
+    box-shadow:
+        0 8px 24px rgba(20,10,45,.08);
+    font-size:13px;
+    font-weight:900;
+}
+
+.hero-badge::before{
+    content:"📍";
+    font-size:14px;
+}
+
+.hero h1{
+    max-width:730px;
+    font-size:clamp(44px,5.6vw,72px);
+    line-height:.98;
+    letter-spacing:-2.5px;
+}
+
+.hero-text{
+    max-width:620px;
+    margin:26px 0 30px;
+    color:var(--ink-soft);
+    font-size:19px;
+    line-height:1.6;
+}
+
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:13px;
+}
+
+.hero-note{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    margin-top:26px;
+    font-size:13px;
+    font-weight:800;
+    color:var(--ink-soft);
+}
+
+.hero-note b{
+    color:var(--ink);
+}
+
+/*HERO VISUAL — MASCOT*/
+.hero-visual{
+    position:relative;
+    min-height:610px;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+}
+
+.mascot-glow{
+    position:absolute;
+
+    width:540px;
+    height:540px;
+
+    left:50%;
+    top:44%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,0,178,.20),
+            rgba(102,13,255,.14) 55%,
+            transparent 72%
+        );
+
+    filter:blur(2px);
+
+    z-index:0;
+}
+
+.mascot-wrap{
+    position:relative;
+
+    z-index:2;
+
+    width:min(560px,96%);
+
+    filter:
+        drop-shadow(0 30px 45px rgba(20,10,45,.22));
+}
+
+.mascot-wrap img{
+    width:100%;
+    height:auto;
+}
+
+.sticker{
+    position:absolute;
+    z-index:3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--paper);
+    font-family:"Baloo 2",sans-serif;
+    font-weight:700;
+    font-size:13px;
+    line-height:1.25;
+    box-shadow:
+        0 14px 30px rgba(20,10,45,.16);
+}
+
+.sticker-1{
+    top:6px;
+    left:0;
+    width:118px;
+    height:118px;
+    border-radius:50%;
+    background:var(--orange);
+    color:var(--ink);
+    transform:rotate(-11deg);
+}
+
+.sticker-2{
+    right:0;
+    bottom:150px;
+    width:98px;
+    height:98px;
+    border-radius:50%;
+    background:var(--blue);
+    transform:rotate(9deg);
+}
+
+.sticker-3{
+    left:14px;
+    bottom:40px;
+    width:130px;
+    height:66px;
+    border-radius:36px;
+    background:var(--pink);
+    transform:rotate(-6deg);
+}
+
+
+/*PROGRAMS*/
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    position:relative;
+    padding:32px;
+    overflow:hidden;
+    border-radius:var(--radius);
+    background:var(--paper);
+    border:1px solid var(--line);
+    transition:
+        transform .45s cubic-bezier(.22,1,.36,1),
+        box-shadow .45s cubic-bezier(.22,1,.36,1),
+        border-color .45s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.015);
+    box-shadow:var(--shadow-lg);
+    border-color:transparent;
+}
+
+.card-icon{
+    transition:transform 1.0s cubic-bezier(.22,1,.36,1);
+}
+
+.card:hover .card-icon{
+    transform:scale(1.1) rotate(-8deg);
+}
+
+.card-bar{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:6px;
+
+    transform:scaleX(0);
+    transform-origin:left;
+
+    transition:transform 1.0s cubic-bezier(.22,1,.36,1);
+}
+
+.card:hover .card-bar{
+    transform:scaleX(1);
+}
+
+.card-icon{
+    width:58px;
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:12px;
+    margin-bottom:22px;
+    border-radius:18px;
+    font-size:27px;
+}
+
+.card-age{
+    display:inline-flex;
+    padding:6px 12px;
+    margin-bottom:11px;
+    border-radius:999px;
+    background:var(--cloud);
+    color:var(--ink-soft);
+    font-size:12px;
+    font-weight:900;
+}
+
+.card h3{
+    margin-bottom:11px;
+    font-size:22px;
+    line-height:1.12;
+    letter-spacing:-.4px;
+}
+
+.card-text{
+    margin-bottom:19px;
+    color:var(--ink-soft);
+    font-size:15.5px;
+    line-height:1.6;
+}
+
+.card-result{
+    padding:15px 16px;
+    border-radius:16px;
+    background:var(--cloud);
+
+    transition:background .35s ease;
+}
+
+.card:hover .card-result{
+    background:#efeaf9;
+}
+
+.card-result b{
+    display:block;
+    margin-bottom:5px;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:.3px;
+    text-transform:uppercase;
+}
+
+.card-result span{
+    color:#4b465e;
+    font-size:14px;
+    line-height:1.55;
+}
+
+.c-pink .card-bar{ background:var(--pink); }
+.c-pink .card-icon{ background:#ffe1f5; }
+.c-pink .card-result b{ color:var(--pink-deep); }
+
+.c-blue .card-bar{ background:var(--blue); }
+.c-blue .card-icon{ background:#dde6ff; }
+.c-blue .card-result b{ color:var(--blue); }
+
+.c-purple .card-bar{ background:var(--purple); }
+.c-purple .card-icon{ background:#e9deff; }
+.c-purple .card-result b{ color:var(--purple); }
+
+.c-orange .card-bar{ background:var(--orange); }
+.c-orange .card-icon{ background:#fff1d6; }
+.c-orange .card-result b{ color:#b57900; }
+
+.c-cyan .card-bar{ background:var(--cyan); }
+.c-cyan .card-icon{ background:#d8f7ff; }
+.c-cyan .card-result b{ color:#0092b3; }
+
+.c-violet .card-bar{ background:var(--purple-light); }
+.c-violet .card-icon{ background:#f2e4ff; }
+.c-violet .card-result b{ color:var(--purple-light); }
+
+
+/*ABOUT*/
+.about-grid{
+    display:grid;
+    grid-template-columns:.88fr 1.12fr;
+    gap:66px;
+    align-items:center;
+}
+
+.about-image{
+    min-height:480px;
+
+    overflow:hidden;
+
+    border-radius:var(--radius-lg);
+
+    background:
+        linear-gradient(
+            150deg,
+            #ffe1f4,
+            #e4d8ff
+        );
+}
+
+.about-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center;
+
+    display:block;
+}
+
+.about-content h2{
+    margin-bottom:22px;
+    font-size:clamp(34px,4.2vw,50px);
+    line-height:1.02;
+    letter-spacing:-1.5px;
+}
+
+.about-content > p{
+    margin-bottom:28px;
+    color:var(--ink-soft);
+    font-size:16.5px;
+    line-height:1.7;
+}
+
+.stat-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:26px;
+}
+
+.stat{
+    padding:14px 20px;
+    border-radius:16px;
+    background:var(--paper);
+    border:1px solid var(--line);
+}
+
+.stat b{
+    display:block;
+    font-family:"Baloo 2",sans-serif;
+    font-size:24px;
+    font-weight:800;
+    background:
+        linear-gradient(
+            95deg,
+            var(--pink),
+            var(--purple)
+        );
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.stat span{
+    color:var(--ink-soft);
+    font-size:12.5px;
+    font-weight:800;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+
+.feature{
+    display:flex;
+    gap:13px;
+    align-items:flex-start;
+    padding:16px;
+    border-radius:17px;
+    background:var(--paper);
+    border:1px solid var(--line);
+}
+
+.feature-icon{
+    width:38px;
+    height:38px;
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:11px;
+    background:var(--cloud);
+    font-size:17px;
+}
+
+.feature strong{
+    display:block;
+    margin-bottom:3px;
+    font-size:14.5px;
+}
+
+.feature span{
+    color:var(--ink-soft);
+    font-size:13.5px;
+    line-height:1.45;
+}
+
+.video-section{
+    background:
+        linear-gradient(
+            150deg,
+            #180d2e,
+            #34104f 60%,
+            #4a0e3c
+        );
+    color:var(--paper);
+}
+
+.video-grid{
+    display:grid;
+    grid-template-columns:.82fr 1.18fr;
+    gap:56px;
+    align-items:center;
+}
+
+.video-section .eyebrow{
+    color:var(--orange);
+}
+
+.video-content h2{
+    margin-bottom:18px;
+    font-size:clamp(32px,4vw,48px);
+    line-height:1.05;
+    letter-spacing:-1.2px;
+}
+
+.video-content > p{
+    margin-bottom:26px;
+    color:#d6cee8;
+    font-size:16px;
+    line-height:1.7;
+}
+
+.video-points{
+    display:grid;
+    gap:11px;
+    margin-bottom:28px;
+}
+
+.video-point{
+    display:flex;
+    gap:11px;
+    align-items:center;
+    padding:13px 15px;
+    border-radius:15px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    font-size:14px;
+    font-weight:700;
+}
+
+.video-point-icon{
+    width:26px;
+    height:26px;
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    background:var(--pink);
+    font-size:13px;
+}
+
+.video-wrapper{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    border-radius:30px;
+    background:#0d0716;
+    box-shadow:0 35px 90px rgba(0,0,0,.35);
+}
+
+.video-wrapper iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+.video-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:14px;
+    text-align:center;
+    padding:30px;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,0,178,.20),
+            transparent 55%
+        );
+}
+
+.video-play{
+    width:74px;
+    height:74px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-size:26px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--purple)
+        );
+    box-shadow:
+        0 15px 40px rgba(255,0,178,.32);
+}
+
+.video-placeholder strong{
+    font-size:18px;
+}
+
+.video-placeholder span{
+    color:#bcb2cf;
+    font-size:12.5px;
+}
+
+
+/*GALLERY*/
+
+.gallery{
+    display:grid;
+    grid-template-columns:1.3fr .7fr .7fr;
+    grid-template-rows:240px 240px;
+    gap:16px;
+}
+
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+    background:
+        linear-gradient(
+            145deg,
+            #ffe1f4,
+            #e6daff
+        );
+
+    transition:
+        transform .4s cubic-bezier(.22,1,.36,1),
+        box-shadow .4s cubic-bezier(.22,1,.36,1);
+}
+
+.gallery-item:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-lg);
+}
+
+.gallery-item:first-child{
+    grid-row:1/3;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+    transition:transform .5s ease;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.06);
+}
+
+.gallery-placeholder{
+    width:100%;
+    height:100%;
+}
+
+/*REVIEWS*/
+.review-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.review{
+    padding:28px;
+    border-radius:24px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    min-height:210px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.review-stars{
+    color:var(--orange);
+    font-size:16px;
+    letter-spacing:2px;
+}
+
+.review-placeholder{
+    flex:1;
+    color:var(--ink-soft);
+    font-size:14px;
+    line-height:1.6;
+}
+
+.review-author{
+    font-weight:900;
+    font-size:13.5px;
+}
+
+/*CTA*/
+.cta{
+    padding:90px 0;
+}
+
+.cta-box{
+    position:relative;
+    overflow:hidden;
+    padding:64px;
+    border-radius:var(--radius-lg);
+    color:var(--paper);
+    background:
+        linear-gradient(
+            110deg,
+            var(--pink),
+            var(--purple) 60%,
+            var(--blue)
+        );
+    box-shadow:
+        0 30px 80px rgba(102,13,255,.24);
+}
+
+.cta-box::before{
+    content:"";
+    position:absolute;
+    width:340px;
+    height:340px;
+    right:-130px;
+    top:-190px;
+    border:2px solid rgba(255,255,255,.16);
+    border-radius:50%;
+}
+
+.cta-box::after{
+    content:"";
+    position:absolute;
+    width:240px;
+    height:240px;
+    left:-120px;
+    bottom:-150px;
+    border:2px solid rgba(255,255,255,.14);
+    border-radius:50%;
+}
+
+.cta-content{
+    position:relative;
+    z-index:1;
+    max-width:720px;
+}
+
+.cta h2{
+    margin-bottom:16px;
+    font-size:clamp(32px,4.6vw,52px);
+    line-height:1.03;
+    letter-spacing:-1.5px;
+}
+
+.cta p{
+    max-width:600px;
+    margin-bottom:26px;
+    font-size:17px;
+    line-height:1.6;
+    opacity:.92;
+}
+
+/*CONTACTS*/
+.contacts-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.contact-card{
+    padding:34px;
+    border-radius:var(--radius);
+    background:var(--paper);
+    border:1px solid var(--line);
+}
+
+.contact-card h3{
+    margin-bottom:18px;
+    font-size:23px;
+}
+
+.contact-item{
+    padding:15px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.contact-item:last-child{
+    border-bottom:0;
+}
+
+.contact-label{
+    margin-bottom:4px;
+    color:var(--ink-soft);
+    font-size:13px;
+    font-weight:800;
+}
+
+.contact-value{
+    display:block;
+    font-size:16px;
+    font-weight:800;
+}
+
+.contact-value:hover{
+    color:var(--pink-deep);
+}
+
+/*FORM*/
+
+.form{
+    display:grid;
+    gap:12px;
+}
+
+.form input,
+.form textarea{
+    width:100%;
+    padding:15px 17px;
+    border:1px solid var(--line);
+    outline:none;
+    border-radius:15px;
+    background:var(--cloud);
+    transition:.2s ease;
+}
+
+.form input:focus,
+.form textarea:focus{
+    border-color:var(--pink);
+    background:var(--paper);
+    box-shadow:
+        0 0 0 4px rgba(255,0,178,.08);
+}
+
+.form textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.form .btn{
+    width:100%;
+}
+
+.form-note{
+    color:var(--ink-soft);
+    font-size:11.5px;
+    line-height:1.5;
+}
+
+/*FOOTER*/
+.footer{
+    padding:32px 0;
+    border-top:1px solid var(--line);
+}
+
+.footer-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.footer-copy{
+    color:var(--ink-soft);
+    font-size:13px;
+}
+
+/*REVEAL ANIMATION*/
+.reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.cards .reveal{
+    transition:
+        opacity .6s ease,
+        transform .6s cubic-bezier(.22,1,.36,1);
+}
+
+/*RESPONSIVE*/
+@media(max-width:1050px){
+    .nav{ display:none; }
+    .menu-btn{ display:block; }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:32px;
+    }
+
+    .hero{ min-height:auto; }
+
+    .hero-visual{
+        max-width:600px;
+        width:100%;
+        margin:0 auto;
+    }
+
+    .video-grid{ grid-template-columns:1fr; }
+
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:44px;
+    }
+
+    .about-image{ min-height:420px; }
+}
+
+@media(max-width:800px){
+
+    .cards{ grid-template-columns:1fr; }
+    .contacts-grid{ grid-template-columns:1fr; }
+    .features{ grid-template-columns:1fr; }
+    .review-grid{ grid-template-columns:1fr; }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:250px 190px 190px;
+    }
+
+    .gallery-item:first-child{
+        grid-column:1/3;
+        grid-row:auto;
+    }
+
+    .section-head{ display:block; }
+    .section-subtitle{ margin-top:14px; }
+
+    .cta-box{ padding:46px 30px; }
+}
+
+@media(max-width:600px){
+
+    .container{ width:min(100% - 28px,1180px); }
+
+    .header{ padding:12px 0; }
+    .header-phone{ display:none; }
+
+    .logo-name{ font-size:21px; }
+
+    .hero{
+        padding-top:112px;
+        padding-bottom:70px;
+    }
+
+    .hero h1{
+        font-size:42px;
+        letter-spacing:-2px;
+    }
+
+    .hero-text{ font-size:17px; }
+
+    .hero-actions{ flex-direction:column; }
+    .hero-actions .btn{ width:100%; }
+
+    .hero-visual{ min-height:420px; }
+
+    .mascot-glow{ width:320px; height:320px; }
+
+    .sticker-1{ width:92px; height:92px; font-size:11px; }
+    .sticker-2{ width:78px; height:78px; font-size:10px; bottom:120px; }
+    .sticker-3{ width:100px; height:56px; font-size:11px; bottom:20px; }
+
+    .section,
+    .video-section{ padding:72px 0; }
+
+    .section-title{ font-size:36px; }
+
+    .cta{ padding:64px 0; }
+    .cta-box{ padding:38px 22px; border-radius:26px; }
+
+    .gallery{
+        grid-template-columns:1fr;
+        grid-template-rows:250px 190px 190px 190px;
+    }
+
+    .gallery-item:first-child{
+        grid-column:auto;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!--HEADER-->
+<header class="header" id="header">
+
+    <div class="container header-inner">
+
+        <a href="#top" class="logo">
+            <span class="logo-mark"></span>
+            <span class="logo-name">Smarty<span>Kids</span></span>
+        </a>
+
+        <nav class="nav">
+            <a href="#directions">Направления</a>
+            <a href="#about">О центре</a>
+            <a href="#how">Как проходят занятия</a>
+            <a href="#gallery">Фото</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+
+        <a class="header-phone" href="tel:+74752509909">
+            <span class="dot"></span>
+            50-99-09
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Открыть меню" type="button">
+            <span></span><span></span><span></span>
+        </button>
+
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#directions">Направления</a>
+        <a href="#about">О центре</a>
+        <a href="#how">Как проходят занятия</a>
+        <a href="#gallery">Фото</a>
+        <a href="#contacts">Контакты</a>
+        <a href="tel:+74752509909">Позвонить: +7 (4752) 50-99-09</a>
+    </nav>
+</header>
+
+<main id="top">
+<!--HERO-->
+<section class="hero">
+
+    <div class="container hero-grid">
+
+        <div class="hero-content reveal">
+
+            <div class="hero-badge">Тамбов · ул. Агапкина, 21А</div>
+
+            <h1 class="display">
+                Развиваем
+                <span class="gradient">способности</span>
+                ребёнка
+            </h1>
+
+            <p class="hero-text">
+                Ментальная арифметика, скорочтение, каллиграфия и другие
+                программы для детей — учим мыслить быстрее, запоминать
+                больше и верить в себя.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#contacts" class="btn btn-primary">📲 Записаться на пробное</a>
+                <a href="#directions" class="btn btn-light">Все направления</a>
+            </div>
+
+            <div class="hero-note">
+                <span><b>10:00–19:00</b> ежедневно</span>
+                <span><b>2,5–14 лет</b> — программы для любого возраста</span>
+            </div>
+
+        </div>
+
+        <div class="hero-visual reveal">
+
+            <div class="mascot-glow"></div>
+
+            <div class="sticker sticker-1">РАЗВИВАЕМ<br>ИНТЕЛЛЕКТ 🧠</div>
+
+            <div class="mascot-wrap">
+                <img src="images/Smartik.jpg" alt="Смартик — символ SmartyKids Тамбов">
+            </div>
+
+            <div class="sticker sticker-2">IQ<br>ЛОГИКА<br>ПАМЯТЬ</div>
+            <div class="sticker sticker-3">Горящие<br>глаза ✦</div>
+
+        </div>
+    </div>
+</section>
+
+<!--DIRECTIONS-->
+<section class="section" id="directions">
+
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div>
+                <div class="eyebrow">Программы</div>
+                <h2 class="section-title display">
+                    Выбираем <span class="gradient">направление</span>
+                </h2>
+            </div>
+            <p class="section-subtitle">
+                14 программ для детей от 2,5 до 14 лет — с понятным
+                результатом, который видно уже через несколько занятий.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <article class="card c-purple reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">✍️</div>
+                <div class="card-age">Мини-группы до 6 человек</div>
+                <h3>Каллиграфия</h3>
+                <p class="card-text">
+                    Учим красиво и уверенно писать — правильная постановка
+                    руки без напряжения, плавные линии, ровные буквы.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Ровный разборчивый почерк, усидчивость и концентрация внимания.</span>
+                </div>
+            </article>
+
+            <article class="card c-orange reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">🎒</div>
+                <div class="card-age">3 формата обучения</div>
+                <h3>Подготовка к школе</h3>
+                <p class="card-text">
+                    Математика, грамота, письмо, чтение, окружающий мир
+                    и психологическая подготовка. Форматы: с нуля,
+                    продвинутый, экспресс.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Уверенный старт в школе, развитие памяти, внимания и мышления.</span>
+                </div>
+            </article>
+
+            <article class="card c-blue reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">📖</div>
+                <div class="card-age">Для школьников</div>
+                <h3>Скорочтение</h3>
+                <p class="card-text">
+                    Развиваем концентрацию, скорость чтения и понимание
+                    текста — без потери смысла и грамотности.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Быстрое и осознанное чтение, хорошая дикция, любовь к книгам.</span>
+                </div>
+            </article>
+
+            <article class="card c-cyan reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">🔤</div>
+                <div class="card-age">от 4 лет</div>
+                <h3>Обучение чтению</h3>
+                <p class="card-text">
+                    Учим читать сразу — через живое взаимодействие с языком,
+                    а не скучное заучивание букв.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Первые слова и предложения с первых занятий, фонематический слух.</span>
+                </div>
+            </article>
+
+            <article class="card c-pink reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">🧮</div>
+                <div class="card-age">5–14 лет</div>
+                <h3>Ментальная арифметика</h3>
+                <p class="card-text">
+                    Работа с абакусом в игровой форме — гармоничное
+                    развитие обоих полушарий мозга.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Быстрый устный счёт, память, концентрация, логическое мышление.</span>
+                </div>
+            </article>
+
+            <article class="card c-violet reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">🇬🇧</div>
+                <div class="card-age">от 3 лет</div>
+                <h3>Английский язык</h3>
+                <p class="card-text">
+                    Погружение в языковую среду через игру, творчество
+                    и общение — с раннего возраста.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Разговорная речь, память, внимание, кругозор.</span>
+                </div>
+            </article>
+
+            <article class="card c-orange reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">🧸</div>
+                <div class="card-age">от 3 лет</div>
+                <h3>Комплексные развивающие занятия</h3>
+                <p class="card-text">
+                    Мягкая адаптация к детскому саду и школе — речь,
+                    интеллект и базовые знания в игровой форме.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Коммуникативные навыки, развитая речь, основы счёта и чтения.</span>
+                </div>
+            </article>
+
+            <article class="card c-blue reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">📘</div>
+                <div class="card-age">1–4 класс</div>
+                <h3>Закрепление школьной программы</h3>
+                <p class="card-text">
+                    Систематизация знаний начальной школы — русский язык,
+                    математика, чтение, окружающий мир.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Устранение пробелов в знаниях, уверенность и успеваемость.</span>
+                </div>
+            </article>
+
+            <article class="card c-purple reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">🖊️</div>
+                <div class="card-age">до 6 класса</div>
+                <h3>Алгоритм грамотного письма</h3>
+                <p class="card-text">
+                    Учим не заучивать правила, а понимать логику языка
+                    и применять чёткие алгоритмы письма.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>В 2–3 раза меньше ошибок в диктантах, уверенность на письме.</span>
+                </div>
+            </article>
+
+            <article class="card c-pink reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">📝</div>
+                <div class="card-age">2–6 класс</div>
+                <h3>Домашняя работа на «5»</h3>
+                <p class="card-text">
+                    Учим ребёнка самостоятельно и эффективно справляться
+                    со школьными домашними заданиями.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Самостоятельность, меньше ошибок, на 30–50% быстрее выполнение ДЗ.</span>
+                </div>
+            </article>
+
+            <article class="card c-cyan reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">✖️</div>
+                <div class="card-age">7–12 лет</div>
+                <h3>Умножайка</h3>
+                <p class="card-text">
+                    Осваиваем таблицу умножения через игру — понимание
+                    принципа, а не зубрёжку.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Уверенное знание таблицы умножения, скорость решения примеров.</span>
+                </div>
+            </article>
+
+            <article class="card c-violet reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">🗨️</div>
+                <div class="card-age">2,5–10 лет</div>
+                <h3>Логопед</h3>
+                <p class="card-text">
+                    Индивидуальные занятия один на один — постановка звуков,
+                    развитие речи и подготовка к школе.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Чистая грамотная речь, уверенность в общении.</span>
+                </div>
+            </article>
+
+            <article class="card c-orange reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">🎨</div>
+                <div class="card-age">2–10 лет</div>
+                <h3>Пластилинография + живопись</h3>
+                <p class="card-text">
+                    Лепим картины пластилином и дополняем красками —
+                    развиваем моторику и воображение.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Развитие речи через моторику, воображение, подготовка руки к письму.</span>
+                </div>
+            </article>
+
+            <article class="card c-blue reveal">
+                <div class="card-bar"></div>
+                <div class="card-icon">🧒</div>
+                <div class="card-age">Дошкольники</div>
+                <h3>Мини-садик</h3>
+                <p class="card-text">
+                    Надёжное и приятное место для малыша — игры, общение
+                    со сверстниками, гибкий график пребывания.
+                </p>
+                <div class="card-result">
+                    <b>Результат</b>
+                    <span>Комфортная адаптация, новые друзья, разностороннее развитие.</span>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!--ABOUT-->
+<section class="section section-cloud" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-image reveal">
+            <img src="images/SmartyHome1.jpg" alt="SmartyKids Тамбов">
+        </div>
+
+        <div class="about-content reveal">
+
+            <div class="eyebrow">О центре</div>
+
+            <h2 class="display">
+                Чтобы ребёнок
+                <span class="gradient">учился с интересом</span>
+            </h2>
+
+            <p>
+                SmartyKids — детский развивающий центр, где дети
+                занимаются с педагогами и развивают интеллектуальные,
+                речевые и творческие навыки в игровом формате —
+                без скучной зубрёжки.
+            </p>
+
+            <div class="stat-row">
+                <div class="stat">
+                    <b>14</b>
+                    <span>направлений</span>
+                </div>
+                <div class="stat">
+                    <b>2,5–14</b>
+                    <span>лет</span>
+                </div>
+                <div class="stat">
+                    <b>10:00–19:00</b>
+                    <span>ежедневно</span>
+                </div>
+            </div>
+
+            <div class="features">
+
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    <div>
+                        <strong>Развитие мышления</strong>
+                        <span>Память, внимание, логика</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎮</div>
+                    <div>
+                        <strong>Геймификация</strong>
+                        <span>Обучение через игру и задания</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">👩‍🏫</div>
+                    <div>
+                        <strong>Педагоги</strong>
+                        <span>Умеют заинтересовать ребёнка</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📚</div>
+                    <div>
+                        <strong>Авторские материалы</strong>
+                        <span>Учебники и рабочие тетради</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--HOW CLASSES WORK + VIDEO-->
+<section class="section video-section" id="how">
+
+    <div class="container video-grid">
+
+        <div class="video-content reveal">
+
+            <div class="eyebrow">Атмосфера центра</div>
+
+            <h2 class="display">Как проходят занятия?</h2>
+
+            <p>
+                Посмотрите видео из SmartyKids и познакомьтесь
+                с атмосферой занятий ещё до первого визита.
+            </p>
+
+            <div class="video-points">
+                <div class="video-point">
+                    <span class="video-point-icon">✓</span>
+                    Игровой формат вместо скучных уроков
+                </div>
+                <div class="video-point">
+                    <span class="video-point-icon">✓</span>
+                    Индивидуальное внимание педагога
+                </div>
+                <div class="video-point">
+                    <span class="video-point-icon">✓</span>
+                    Практика на каждом занятии
+                </div>
+            </div>
+
+            <a href="#contacts" class="btn btn-primary">Записаться на пробное</a>
+
+        </div>
+
+        <div class="video-wrapper reveal">
+            <iframe
+                src="https://vk.ru/video_ext.php?oid=-197194953&id=456240718&hash=2e412be0483c9a87"
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture;"
+                allowfullscreen
+            ></iframe>
+        </div>
+    </div>
+</section>
+
+<!--GALLERY-->
+<section class="section" id="gallery">
+
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div>
+                <div class="eyebrow">Жизнь центра</div>
+                <h2 class="section-title display">
+                    Живые <span class="gradient">моменты</span>
+                </h2>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-item reveal">
+                <img src="images/SmartyGallery1.jpg" alt="Занятие SmartyKids">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/SmartyGallery2.jpg" alt="Занятие SmartyKids">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/SmartyGallery3.jpg" alt="Занятие SmartyKids">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/SmartyGallery4.jpg" alt="Занятие SmartyKids">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="images/SmartyGallery5.jpg" alt="Занятие SmartyKids">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--REVIEWS-->
+<section class="section section-cloud" id="reviews">
+
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div>
+                <div class="eyebrow">Отзывы родителей</div>
+                <h2 class="section-title display">
+                    Нам важно, что <span class="gradient">говорят родители</span>
+                </h2>
+            </div>
+            <p class="section-subtitle">
+                Здесь разместим реальные отзывы, которые предоставит центр.
+            </p>
+        </div>
+
+        <div class="review-grid">
+
+            <article class="review reveal">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-placeholder">ЗДЕСЬ БУДЕТ РЕАЛЬНЫЙ ОТЗЫВ РОДИТЕЛЯ</p>
+                <div class="review-author">Имя родителя</div>
+            </article>
+
+            <article class="review reveal">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-placeholder">ЗДЕСЬ БУДЕТ РЕАЛЬНЫЙ ОТЗЫВ РОДИТЕЛЯ</p>
+                <div class="review-author">Имя родителя</div>
+            </article>
+
+            <article class="review reveal">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-placeholder">ЗДЕСЬ БУДЕТ РЕАЛЬНЫЙ ОТЗЫВ РОДИТЕЛЯ</p>
+                <div class="review-author">Имя родителя</div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!--CTA-->
+<section class="cta">
+    <div class="container">
+        <div class="cta-box reveal">
+            <div class="cta-content">
+                <h2 class="display">Давайте познакомимся с SmartyKids?</h2>
+                <p>Запишитесь на пробное занятие и познакомьтесь с центром и педагогами лично.</p>
+                <a href="#contacts" class="btn btn-light">Записаться на пробное</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--CONTACTS-->
+<section class="section section-cloud" id="contacts">
+
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div>
+                <div class="eyebrow">Мы рядом</div>
+                <h2 class="section-title display">Контакты</h2>
+            </div>
+        </div>
+
+        <div class="contacts-grid">
+
+            <div class="contact-card reveal">
+
+                <h3>SmartyKids Тамбов</h3>
+
+                <div class="contact-item">
+                    <div class="contact-label">Адрес</div>
+                    <div class="contact-value">г. Тамбов, ул. Агапкина, д. 21А</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">Телефон</div>
+                    <a class="contact-value" href="tel:+74752509909">+7 (4752) 50-99-09</a>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <a class="contact-value" href="mailto:smartykids.tmb1@mail.ru">smartykids.tmb1@mail.ru</a>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">Сообщество</div>
+                    <a class="contact-value" href="https://vk.ru/smartykidstmb" target="_blank" rel="noopener noreferrer">
+                        VK SmartyKids Тамбов ↗
+                    </a>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">Режим работы</div>
+                    <div class="contact-value">Ежедневно · 10:00–19:00</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">ИП</div>
+                    <div class="contact-value">Попова Татьяна Викторовна</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">ИНН</div>
+                    <div class="contact-value">682966154823</div>
+                </div>
+            </div>
+
+            <div class="contact-card reveal">
+
+                <h3>Записаться на пробное</h3>
+
+                <form class="form" id="contactForm">
+
+                    <input type="text" id="name" placeholder="Ваше имя" autocomplete="name" required>
+                    <input type="tel" id="phone" placeholder="Ваш телефон" autocomplete="tel" required>
+                    <input type="text" id="child" placeholder="Имя и возраст ребёнка">
+                    <textarea id="message" placeholder="Какое направление вас интересует?"></textarea>
+
+                    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+
+                    <div class="form-note">
+                        Нажимая кнопку, вы соглашаетесь на обработку данных для связи по заявке.
+                        Заявка откроется в вашей почтовой программе и отправится на smartykids.tmb1@mail.ru.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<!--FOOTER-->
+<footer class="footer">
+    <div class="container footer-inner">
+
+        <a href="#top" class="logo">
+            <span class="logo-mark"></span>
+            <span class="logo-name">Smarty<span>Kids</span></span>
+        </a>
+
+        <div class="footer-copy">© 2026 SmartyKids Тамбов</div>
+
+    </div>
+</footer>
+
+<script>
+const header = document.getElementById("header");
+window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 30);
+});
+
+const menuBtn = document.getElementById("menuBtn");
+const mobileNav = document.getElementById("mobileNav");
+
+menuBtn.addEventListener("click", () => {
+    const isOpen = mobileNav.classList.toggle("active");
+    menuBtn.classList.toggle("active", isOpen);
+    document.body.classList.toggle("menu-open", isOpen);
+});
+
+mobileNav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        mobileNav.classList.remove("active");
+        menuBtn.classList.remove("active");
+        document.body.classList.remove("menu-open");
+    });
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold:.12 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", function(event){
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const child = document.getElementById("child").value;
+    const message = document.getElementById("message").value;
+
+    const subject = encodeURIComponent("Заявка с сайта SmartyKids Тамбов");
+    const body = encodeURIComponent(
+        "Новая заявка с сайта SmartyKids Тамбов\n\n" +
+        "Имя: " + name + "\n" +
+        "Телефон: " + phone + "\n" +
+        "Имя и возраст ребёнка: " + child + "\n" +
+        "Интересует: " + message
+    );
+
+    window.location.href = "mailto:smartykids.tmb1@mail.ru?subject=" + subject + "&body=" + body;
+});
+</script>
+</body>
+</html>
