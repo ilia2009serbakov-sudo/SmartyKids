@@ -329,42 +329,17 @@ button{
 }
 
 .logo-mark{
-    position:relative;
-
     width:42px;
     height:42px;
 
-    border-radius:
-        13px 13px 13px 4px;
+    flex:none;
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--pink),
-            var(--purple)
-        );
+    border-radius:50%;
 
-    transform:rotate(-8deg);
+    object-fit:cover;
 
     box-shadow:
         0 8px 20px rgba(255,0,178,.24);
-}
-
-.logo-mark::after{
-    content:"✦";
-
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:var(--paper);
-
-    font-size:17px;
-
-    transform:rotate(8deg);
 }
 
 .logo-name{
@@ -2226,7 +2201,7 @@ button{
 
         <a href="#top" class="logo">
 
-            <span class="logo-mark"></span>
+            <img src="images/logo.jpg" alt="SmartyKids" class="logo-mark">
 
             <span class="logo-name">
                 Smarty<span>Kids</span>
@@ -2362,7 +2337,7 @@ button{
                 </span>
 
                 <span>
-                    <b>2,5–14 лет</b>
+                    <b>1,5–15 лет</b>
                     — программы для любого возраста
                 </span>
 
@@ -2482,7 +2457,7 @@ button{
                 </div>
 
                 <div class="age-tile-note">
-                    2,5–7 лет · развитие речи,
+                    1,5–7 лет · развитие речи,
                     мышления, памяти, подготовка
                     к школе и творческие занятия.
                 </div>
@@ -2541,7 +2516,7 @@ button{
                 <div>
 
                     <div class="eyebrow">
-                        2,5–7 лет
+                        1,5–7 лет
                     </div>
 
                     <div class="course-area-title">
@@ -2586,6 +2561,44 @@ button{
                         Математика, грамота, письмо,
                         чтение и психологическая подготовка
                         к школьному обучению.
+                    </p>
+
+                    <button
+                        class="card-details-btn"
+                        type="button"
+                    >
+                        Подробнее
+                    </button>
+
+                </article>
+
+
+
+                <!-- SMARTYМАТИКА -->
+
+                <article
+                    class="card c-blue reveal"
+                    data-course="smartymatika"
+                >
+
+                    <div class="card-bar"></div>
+
+                    <div class="card-icon">
+                        🔢
+                    </div>
+
+                    <div class="card-age">
+                        от 2 лет
+                    </div>
+
+                    <h3>
+                        SMARTYматика
+                    </h3>
+
+                    <p class="card-text">
+                        Математика для малышей —
+                        числа, форма и счёт
+                        через игру.
                     </p>
 
                     <button
@@ -3333,7 +3346,7 @@ button{
 
                 <div class="stat">
 
-                    <b>14</b>
+                    <b>15</b>
 
                     <span>
                         направлений
@@ -3344,7 +3357,7 @@ button{
 
                 <div class="stat">
 
-                    <b>2,5–14</b>
+                    <b>1,5–15</b>
 
                     <span>
                         лет
@@ -3584,7 +3597,6 @@ button{
                 </h2>
 
             </div>
-
         </div>
 
 
@@ -4075,7 +4087,7 @@ button{
             class="logo"
         >
 
-            <span class="logo-mark"></span>
+            <img src="images/logo.jpg" alt="SmartyKids" class="logo-mark">
 
             <span class="logo-name">
                 Smarty<span>Kids</span>
@@ -4355,6 +4367,47 @@ const courseData = {
     },
 
 
+    "smartymatika": {
+
+        icon:"🔢",
+
+        age:"от 2 лет",
+
+        title:"SMARTYматика",
+
+        description:`
+            <p>
+                Курс состоит из 2 уровней и включает
+                72 занятия. Ребёнок получает представление
+                о количестве предметов и соотношении числа,
+                учится оперировать числами, опираясь
+                на предметы, и знакомится с числовым рядом
+                и простыми действиями с числами.
+            </p>
+
+            <p>
+                Всё происходит в процессе игры:
+                развиваем концентрацию внимания, мышление,
+                память и воображение, показываем и объясняем
+                поиск решений сложных задач.
+            </p>
+
+            <p>
+                Формируем представление о форме, величине,
+                цвете и количестве, учим работать в условиях
+                многозадачности, тренируем мелкую моторику
+                и умение фиксировать ответ на бумаге.
+            </p>
+        `,
+
+        result:`
+            Понимание чисел и счёта, мелкая моторика,
+            концентрация внимания и мышление.
+        `
+
+    },
+
+
     "reading": {
 
         icon:"🔤",
@@ -4450,6 +4503,11 @@ const courseData = {
                 используются цифровые платформы
                 Oxford и Cambridge.
             </p>
+
+            <p>
+                Для школьников также доступна
+                отдельная подготовка к ОГЭ и ЕГЭ.
+            </p>
         `,
 
         result:`
@@ -4511,6 +4569,11 @@ const courseData = {
                 фонематическим слухом,
                 слоговой структурой слова
                 и грамматическим строем речи.
+            </p>
+
+            <p>
+                Также доступны занятия с 1,5 лет
+                и групповые занятия по запуску речи.
             </p>
         `,
 
